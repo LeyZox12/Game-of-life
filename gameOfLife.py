@@ -2,12 +2,13 @@ import pygame
 from math import sin,cos,pi
 from time import sleep
 pygame.init()
-screen = pygame.display.set_mode((512,512))
+winSize = int(input("taille fenêtre(carré):"))
+screen = pygame.display.set_mode((winSize,winSize))
 pygame.display.set_caption("Conway's Game of Life")
 ouvert = True
 tailleGrille = int(input("Taille de la grille:"))
 grille = [[False for _ in range(tailleGrille)] for _ in range(tailleGrille)]
-ratio = 512/tailleGrille
+ratio = winSize/tailleGrille
 color = 50
 estEnPause = True
 fps = 10
@@ -72,6 +73,6 @@ while ouvert:
             x+=1
         y+=1
     for i in range(tailleGrille):
-        pygame.draw.line(screen,(color,color,color),(0,ratio*i),(512,ratio*i))
-        pygame.draw.line(screen,(color,color,color),(ratio*i,0),(ratio*i,512))
+        pygame.draw.line(screen,(color,color,color),(0,ratio*i),(winSize,ratio*i))
+        pygame.draw.line(screen,(color,color,color),(ratio*i,0),(ratio*i,winSize))
     pygame.display.flip()
